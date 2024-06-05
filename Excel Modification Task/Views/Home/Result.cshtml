@@ -1,0 +1,52 @@
+﻿@model FileData
+
+
+@{
+	ViewData["Title"] = "Excel-File";
+}
+
+
+@if (Model.data != null)
+{
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				@foreach (var headerCell in Model.data.FirstOrDefault())
+				{
+					<th scope="col">@headerCell</th>
+				}
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var row in Model.data.Skip(1))
+			{
+				<tr>
+					@foreach (var cell in row)
+					{
+						<td>@cell</td>
+					}
+				</tr>
+			}
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="1">Grand Total</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td colspan="7">@Model.Sum</td>
+				
+			</tr>
+		</tfoot>
+	</table>
+
+	<a href="@ViewBag.FilePath" class="btn btn-primary mt-5">Download Modified Excel File </a>
+}
+else
+{
+	<p>There is no data to display.</p>
+}
+
+

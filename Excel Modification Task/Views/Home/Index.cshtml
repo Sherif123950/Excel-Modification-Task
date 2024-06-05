@@ -1,0 +1,13 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+
+<h2>Please Upload Your File Here</h2>
+
+<form enctype="multipart/form-data" method="post" asp-action="ProcessFile">
+	<div class="form-group justify-content-center">
+		<label for="file"></label>
+		<input id="file" name="file" type="file" class="form-control mt-3" />
+		<input type="submit" value="Submit" class="btn btn-primary mt-3" />
+	</div>
+</form>
